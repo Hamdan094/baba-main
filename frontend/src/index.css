@@ -1,0 +1,317 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 30 50% 98%;
+    --foreground: 0 0% 10%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 10%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 10%;
+    --primary: 27 100% 50%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 30 20% 94%;
+    --secondary-foreground: 0 0% 10%;
+    --muted: 30 15% 93%;
+    --muted-foreground: 0 0% 40%;
+    --accent: 16 100% 50%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 30 15% 88%;
+    --input: 30 15% 88%;
+    --ring: 27 100% 50%;
+    --chart-1: 27 100% 50%;
+    --chart-2: 16 100% 50%;
+    --chart-3: 35 100% 50%;
+    --chart-4: 0 0% 20%;
+    --chart-5: 45 100% 50%;
+    --radius: 0.75rem;
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Manrope', sans-serif;
+  background-color: #FFF8F0;
+  color: #1a1a1a;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Heading style */
+.font-heading {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+}
+
+/* Glassmorphism for navbar */
+.glass {
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  background: rgba(255, 255, 255, 0.85);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+/* Glow effect */
+.glow-orange {
+  box-shadow: 0 4px 40px rgba(255, 107, 0, 0.1), 0 0 0 1px rgba(255, 107, 0, 0.08);
+}
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #FFF8F0;
+}
+::-webkit-scrollbar-thumb {
+  background: #FF6B00;
+  border-radius: 3px;
+}
+
+/* =============================================================================
+   ANIMATIONS
+   ============================================================================= */
+
+/* 1. Fade in up - page sections and cards */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* 1. Page fade in - whole page fades in on navigation */
+@keyframes pageFadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* 2. Cart bounce - cart icon bounces when item added */
+@keyframes cartBounce {
+  0%   { transform: scale(1);    }
+  25%  { transform: scale(1.4);  }
+  50%  { transform: scale(0.9);  }
+  75%  { transform: scale(1.15); }
+  100% { transform: scale(1);    }
+}
+
+/* 3. Typewriter cursor blink */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+/* 4. Staggered card entrance - cards slide up one by one */
+@keyframes cardEntrance {
+  from { opacity: 0; transform: translateY(30px) scale(0.97); }
+  to   { opacity: 1; transform: translateY(0)    scale(1);    }
+}
+
+/* 8. Scroll reveal - elements fade in as you scroll to them */
+@keyframes scrollReveal {
+  from { opacity: 0; transform: translateY(40px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+
+/* Floating - empty state illustration */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-8px); }
+}
+
+/* Pulse glow - chatbot button */
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(255, 107, 0, 0.3); }
+  50%       { box-shadow: 0 0 40px rgba(255, 107, 0, 0.5); }
+}
+
+/* Toast slides in from the right */
+@keyframes slideInRight {
+  from { transform: translateX(120%); opacity: 0; }
+  to   { transform: translateX(0);    opacity: 1; }
+}
+
+/* Toast progress bar shrinks over 3 seconds */
+@keyframes shrinkWidth {
+  from { width: 100%; }
+  to   { width: 0%;   }
+}
+
+/* Skeleton shimmer - loading placeholders */
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position:  200% 0; }
+}
+
+/* Back to top bounce on hover */
+@keyframes bounceUp {
+  0%, 100% { transform: translateY(0);   }
+  50%       { transform: translateY(-5px); }
+}
+
+/* Chat bubble pop in */
+@keyframes chatBubble {
+  0%   { opacity: 0; transform: scale(0.8) translateY(10px); }
+  100% { opacity: 1; transform: scale(1)   translateY(0);    }
+}
+
+/* =============================================================================
+   ANIMATION UTILITY CLASSES
+   ============================================================================= */
+
+/* 1. Page fade in - applied to every page wrapper */
+.page-fade-in {
+  animation: pageFadeIn 0.4s ease-out forwards;
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+/* 2. Cart bounce - triggered by adding a class via JavaScript */
+.cart-bounce {
+  animation: cartBounce 0.5s ease-out forwards;
+}
+
+/* 3. Typewriter cursor */
+.typewriter-cursor::after {
+  content: '|';
+  color: #FF6B00;
+  animation: blink 0.8s ease-in-out infinite;
+  margin-left: 2px;
+}
+
+/* 4. Card entrance with stagger delays */
+.card-entrance {
+  opacity: 0;
+  animation: cardEntrance 0.5s ease-out forwards;
+}
+.card-entrance:nth-child(1)  { animation-delay: 0.05s; }
+.card-entrance:nth-child(2)  { animation-delay: 0.10s; }
+.card-entrance:nth-child(3)  { animation-delay: 0.15s; }
+.card-entrance:nth-child(4)  { animation-delay: 0.20s; }
+.card-entrance:nth-child(5)  { animation-delay: 0.25s; }
+.card-entrance:nth-child(6)  { animation-delay: 0.30s; }
+.card-entrance:nth-child(7)  { animation-delay: 0.35s; }
+.card-entrance:nth-child(8)  { animation-delay: 0.40s; }
+.card-entrance:nth-child(9)  { animation-delay: 0.45s; }
+.card-entrance:nth-child(10) { animation-delay: 0.50s; }
+.card-entrance:nth-child(11) { animation-delay: 0.55s; }
+.card-entrance:nth-child(12) { animation-delay: 0.60s; }
+
+/* 8. Scroll reveal - applied by the useScrollReveal hook */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+}
+.scroll-reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Toast notification slide in */
+.animate-slide-in-right {
+  animation: slideInRight 0.3s ease-out forwards;
+}
+
+/* Toast progress bar */
+.animate-shrink-width {
+  animation: shrinkWidth 3s linear forwards;
+}
+
+/* Skeleton shimmer loading effect */
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    #f0ebe6 25%,
+    #faf5f0 50%,
+    #f0ebe6 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 8px;
+}
+
+/* Back to top hover bounce */
+.hover-bounce:hover {
+  animation: bounceUp 0.4s ease-in-out;
+}
+
+/* Chat bubble pop animation */
+.chat-bubble {
+  animation: chatBubble 0.3s ease-out forwards;
+}
+
+/* Animation stagger delays for sequential entrance */
+.stagger-1 { animation-delay: 0.1s; }
+.stagger-2 { animation-delay: 0.2s; }
+.stagger-3 { animation-delay: 0.3s; }
+.stagger-4 { animation-delay: 0.4s; }
+.stagger-5 { animation-delay: 0.5s; }
+
+/* =============================================================================
+   CARD STYLES
+   ============================================================================= */
+
+/* Menu card hover - lift and glow effect */
+.menu-card {
+  transition: all 0.3s ease-out;
+}
+.menu-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(255, 107, 0, 0.12);
+  border-color: rgba(255, 107, 0, 0.3);
+}
+
+/* Menu card image zoom on hover */
+.menu-card img {
+  transition: transform 0.4s ease-out;
+}
+.menu-card:hover img {
+  transform: scale(1.05);
+}
+
+/* =============================================================================
+   UTILITY
+   ============================================================================= */
+
+/* Truncate text to 2 lines */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}

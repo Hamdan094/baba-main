@@ -1,0 +1,16 @@
+fastapi
+uvicorn[standard]
+motor
+pymongo
+python-dotenv
+bcrypt
+pyjwt
+openai
+stripe
+aiosmtplib
+python-multipart
+pydantic
+httpx
+email-validator
+httpx
+
