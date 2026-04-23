@@ -23,7 +23,7 @@ A full-stack, production-deployed online ordering system for **Baba Falooda**, a
 
 ## Overview
 
-Baba Falooda is a 35-year-old family restaurant that previously relied entirely on third-party aggregator platforms (Deliveroo, Uber Eats, Just Eat) charging 15–35% commission per order. This project delivers a bespoke direct ordering channel that eliminates those fees, gives the owner full control over their menu and customer data, and provides a modern AI-assisted customer experience.
+Baba Falooda is a 40-year-old family restaurant that previously relied entirely on third-party aggregator platforms (Deliveroo, Uber Eats, Just Eat) charging 15–35% commission per order. This project delivers a bespoke direct ordering channel that eliminates those fees, gives the owner full control over their menu and customer data, and provides a modern AI-assisted customer experience.
 
 ---
 
@@ -67,7 +67,7 @@ Baba Falooda is a 35-year-old family restaurant that previously relied entirely 
 | Payments | Stripe (Live Mode) |
 | AI Chatbot | OpenAI GPT-4o |
 | Image Storage | Cloudinary |
-| Email | Gmail SMTP |
+| Email | SendGrid |
 | Frontend Hosting | Vercel |
 | Backend Hosting | Railway |
 | Version Control | GitHub |
@@ -130,7 +130,7 @@ baba-main/
 - Stripe account
 - OpenAI API key
 - Cloudinary account
-- Gmail account with App Password enabled
+- SendGrid API Key
 
 ### Backend Setup
 
@@ -173,12 +173,11 @@ MONGO_URL=mongodb+srv://username:password@cluster.mongodb.net/?retryWrites=true&
 OPENAI_API_KEY=sk-...
 STRIPE_API_KEY=sk_live_...
 STRIPE_WEBHOOK_SECRET=whsec_...
-GMAIL_USERNAME=your@gmail.com
-GMAIL_APP_PASSWORD=xxxx xxxx xxxx xxxx
 CLOUDINARY_CLOUD_NAME=your_cloud_name
 CLOUDINARY_API_KEY=your_api_key
 CLOUDINARY_API_SECRET=your_api_secret
 JWT_SECRET=your_jwt_secret_key
+SENDGRID_API_KEY=SG.....
 ```
 
 Create a `.env` file inside the `frontend/` directory:
@@ -262,7 +261,6 @@ BSc (Hons) Computer Science
 University of Westminster  
 Module: 6COSC023W.Y  
 Supervisor: Deepika  
-Viva: 14 May 2026
 
 ---
 
